@@ -1,6 +1,5 @@
 <h1>Southland - KPI Scorecard</h1>
-<p>This is the repository for all of the code and issues for the Southland KPI Scorecard</p>
-<p><a href="https://southlandind.sharepoint.com/Pages/KPIScorecard.aspx" target="_window">KPI Scorecard</a></p>
+<p>This is the repository for all of the code and issues for the <a href="https://southlandind.sharepoint.com/Pages/KPIScorecard.aspx" target="_window">Southland KPI Scorecard</a></p>
 <p>Primary Pages:
 <ul>
 <li>Index.html: This is the original file. Values are hard-coded</li>

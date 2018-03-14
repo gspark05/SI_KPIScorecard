@@ -13,6 +13,7 @@
 	<ul>
 		<li>Bootstrap v3.3.5</li>
 		<li>JQuery v2.1.4</li>
+		<li>C3</li>
 	</ul>
 </li>
 </ul>

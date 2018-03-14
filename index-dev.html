@@ -1,0 +1,1256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Global stylesheets -->
+	<link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/iconmoon.css" rel="stylesheet" type="text/css">
+	<link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/core.css" rel="stylesheet" type="text/css">
+	<link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/components.css" rel="stylesheet" type="text/css">
+	<link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/colors.css" rel="stylesheet" type="text/css">
+    <link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/c3.css" rel="stylesheet" type="text/css" />
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/pace.min.js"></script>
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/jquery.min.js"></script>
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/d3.min.js"></script>
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/d3_tooltip.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
+
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/app.js"></script>
+	<script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/dashboard.js"></script>
+    <script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/d3.min.js"></script>
+    <script type="text/javascript" src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/c3.js"></script>
+	<!-- /theme JS files -->
+    <link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/font-awesome.css" rel="stylesheet" />
+    <script src="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/tippy.js"></script>
+    <link href="https://southlandind.sharepoint.com/SiteAssets/KPIScorecard/tippy.css" rel="stylesheet" />
+
+    <style>
+        #safetyIncidentChart .c3-gauge-value {
+            font-size: 16px !important;
+        }
+        #modalchart {
+            width: 100%;
+            height: 100%;
+        }
+		.ms-webpart-chrome-title {
+			display: none !important;
+		}
+		.right-wp-zone-col {
+			display: none !important;
+		}
+		.col-fluid-2 {
+			margin-right: 0px !important;
+		}
+		.modal-backdrop {
+			display: none !important;
+		}
+		.icons-list li {
+			cursor: default;
+		}
+    </style>
+
+</head>
+
+<body>
+
+
+
+		<!-- Page content -->
+		<div class="">
+            
+			<!-- Main content -->
+			<div class="">
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">KPI Scorecard</span> - Dashboard - FY18</h4><br />
+                            <span>Previous Years: &nbsp;&nbsp;</span><button onclick="window.open('https://southlandind.sharepoint.com/Pages/KPIScorecard%202017.aspx', '_blank');" type="button" class="btn btn-primary">FY 17</button>
+						</div>
+					</div>
+				</div>
+				<!-- /page header -->
+
+
+				<!-- Content area -->
+				<div class="content">
+
+					<!-- Main charts -->
+					<div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Earned Revenue</span></h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="earnedRevenueKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="earnedRevenueFullScreen"><i class="icon-search4"></i></li>
+                                            <li><i id="earnedRevenueTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="earnedRevenueChart" export-chart exported-file-name="My line chart exported"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Operating Income as % of Earned Revenue</span></h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="operatingIncomeKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="operatingIncomeFullScreen"><i class="icon-search4"></i></li>
+                                            <li><i id="operatingIncomeTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="operatingIncomeChart" export-chart exported-file-name="My line chart exported"></div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+					
+					<div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Booked Sales</span> - Total Company</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="bookedSalesKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="bookedSalesFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="bookedSalesTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="bookedSalesChart"></div>
+                                </div>
+                            </div>
+                        </div>						
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Engineering Direct Booked Sales</span> - Total Company</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="designedBookSaleKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="designedBookFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="designatedBookedTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="designedBookedSalesChart"></div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+					
+					<div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Connected Solutions Booked Sales</span> - Total Company</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="connectedBookKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="connectedSolutionsFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="connectedBookedTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="connectedBookedSalesChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Backlog + Sold But Not Booked</span></h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="backlogKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="backlogFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="backlogSoldTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="backlogSoldChart"></div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Cash Flow-Project Investment Days Outstanding</span> (lower = better)</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="cashFlowKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="cashflowFullScreen"><i class="icon-search4"></i></li>
+                                            <li><i id="cashFlowTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="cashFlowChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Safety</span> - Incident Rate (Year-to-Date)</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="safetyIncidentKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="safetyIncidentFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="safetyIncidentTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="safetyIncidentChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Vehicle</span> - Incident Rate (Year-to-Date)</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="vehicleIncidentKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="vehicleFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="vehicleIncidentTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="vehicleIncidentChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h6 class="panel-title"><span class="text-semibold">Vehicle</span> - Incident Rate (Year-to-Date) At Fault</h6>
+                                    <div class="heading-elements">
+                                        <ul class="icons-list">
+                                            <li id="vehicleIncidentAtFaultKPI"></li>
+                                            <li class="tool" title="Fullscreen" id="vehicleAtFaultFullscreen"><i class="icon-search4"></i></li>
+                                            <li><i id="vehicleIncidentAtFaultTooltip" class="icon-question6"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div id="vehicleIncidentAtFaultChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /main charts -->
+                </div>
+			<!-- /content area -->
+
+		</div>
+		<!-- /main content -->
+
+	</div>
+	<!-- /page content -->
+
+	<!-- /page container -->
+
+    <!-- Basic modal -->
+    <div id="modal_default" class="modal fade">
+        <div class="modal-dialog modal-full">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title">Basic modal</h5>
+                </div>
+
+                <div class="modal-body">
+                    <div id="modalchart"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /basic modal -->
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    var KPI = {
+        red: '<span class="bg-danger text-highlight">Below by over 5%</span>',
+        yellow: '<span style="background-color:yellow;" class="text-highlight">Below by less than 5%</span>',
+        yellowHigh: '<span style="background-color:yellow;" class="text-highlight">Over by less than 5%</span>',
+        green: '<span class="bg-success text-highlight">At or over 5%</span>'
+    };
+    var kpi, tooltiptext;
+    var height = $(window).height() * .8;
+    var earnedRevData = [], operatingIncomeData = [], bookedSalesData = [], designedBookedData = [], connectedBookedData = [], backlogData = [], cashFlowData = [], safetyIncidentData = [], vehicleIncidentData = [], vehicleIncidentAtFaultData = [];
+    var earnedKPI, operatingIncomeKPI, bookedSalesKPI, designedBookedKPI, connectedKPI, backlogKPI, cashKPI, safetyKPI, vehicleKPI, vikpi;
+    var earnedRevTooltipText, operatingTooltiptext, bookedtooltiptext, designtooltiptext, connectedtooltiptext, backlogtooltiptext, cashtooltiptext, safetytooltiptext, vehicletooltiptext, vitooltiptext;
+
+    var months = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'];
+    var spMonths = ['October', 'November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September'];
+    var spOSHAMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    var oshaMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+
+	// Load SP libraries and then call function to get data from list
+	$(document).ready(function () {
+        SP.SOD.executeFunc('sp.js', 'SP.ClientContext', function () { console.log("Loaded"); });
+        ExecuteOrDelayUntilScriptLoaded(init, 'sp.js');
+    });
+
+    function createCharts() {
+        // Earned Revenue Chart
+        //earnedRevTooltipText = "Measure of work completed and invoiced to our customer versus goal.";
+        /*
+        var earnedRevData = [
+            ['2018 Plan', 77182, 157861, 237113, 323017, 398606, 475368, 553073, 634734, 714329, 786575, 870854, 943919],
+            ['YTD Actual', 74915, 159759, 235578, 325878]
+        ];
+        */
+        console.log("Earned Revenue", earnedRevData);
+        for (var x = 1; x < earnedRevData[0].length; x++) {
+            earnedRevData[0][x] = earnedRevData[0][x] * 1000;
+            try {
+                earnedRevData[1][x] = earnedRevData[1][x] * 1000;
+            } catch (ex) {
+                console.log("Exception: " + ex);
+            }
+        }
+        //earnedKPI = KPI.green;
+        earnedVary = 1;
+        createEarnedRevChart('#earnedRevenueChart', '#earnedRevenueTooltip', earnedRevTooltipText, '#earnedRevenueKPI', earnedKPI, earnedVary);
+
+        // Operating Income Chart
+        operatingIncomeHideGoal = false;
+        //operatingTooltiptext = "Measure company profit generated per dollar of revenue (efficiency). Compared to plan. Long term company goal is 10%.";
+        /*
+        var operatingIncomeData = [
+            ['2018 Plan', .018, .031, .03, .029, .028, .028, .027, .028, .031, .032, .045, .043],
+            ['YTD Actual', .037, .015, .025, .021],
+            ['Company Goal', .10, .10, .10, .10, .10, .10, .10, .10, .10, .10, .10, .10,]
+        ];
+        */
+        //operatingIncomeKPI = KPI.red;
+        operatingVary = -14;
+        createOperatingIncomeChart('#operatingIncomeChart', '#operatingIncomeTooltip', operatingTooltiptext, '#operatingIncomeKPI', operatingIncomeKPI, operatingVary);
+
+        // Booked Sales Chart
+        //bookedtooltiptext = "Measure of work successfully won and recorded as backlog to reflect amount of future work to be done.";
+        /*
+        var bookedSalesData = [
+            ['2018 Plan', 233246, 300725, 482521, 650607, 678915, 746804, 928404, 988599, 1067255, 1141982, 1176099, 1207397],
+            ['YTD Actual', 54324, 80533, 151089, 188837]
+        ];
+        */
+        for (var x = 1; x < bookedSalesData[0].length; x++) {
+            bookedSalesData[0][x] = bookedSalesData[0][x] * 1000;
+            try {
+                bookedSalesData[1][x] = bookedSalesData[1][x] * 1000;
+            } catch (ex) {
+                console.log("Exception: " + ex);
+            }
+        }
+        bookedVary = -71;
+        //bookedSalesKPI = KPI.red;
+        createBookedSalesChart('#bookedSalesChart', '#bookedSalesTooltip', bookedtooltiptext, '#bookedSalesKPI', bookedSalesKPI, bookedVary);
+
+        // Designed Booked Sales Chart -- Engineering Direct Booked Sales
+        //designtooltiptext = "A key strategic driver enabling the Company to improve our end user / owner relationships. Engineering direct will feed our Connected Solutions pipeline and enable us to win more work.";
+        /*
+        var designedBookedData = [
+            ['2018 Plan', 658, 1317, 1975, 2744, 3514, 4283, 5082, 5881, 6679, 7478, 8276, 9075],
+            ['YTD Actual', 3318, 3832, 5160, 5342]
+        ];
+        */
+        for (var x = 1; x < designedBookedData[0].length; x++) {
+            designedBookedData[0][x] = designedBookedData[0][x] * 1000;
+            try {
+                designedBookedData[1][x] = designedBookedData[1][x] * 1000;
+            } catch (ex) {
+                console.log("Exception: " + ex);
+            }
+        }
+        designedVary = 95;
+        //designedBookedKPI = KPI.green;
+        createDesignBookedChart('#designedBookedSalesChart', '#designatedBookedTooltip', designtooltiptext, '#designedBookSaleKPI', designedBookedKPI, designedVary);
+
+        // Connected Booked Sales Chart 
+        //connectedtooltiptext = "Measure of successfully working as one team, using our customer relationships to become aware of and win more engineering, construction, controls, service and energy work through our end customer (owners) building lifecycle.";
+        /*
+        var connectedBookedData = [
+            ['2018 Plan', 3188, 6375, 9563, 12751, 15939, 17126, 22314, 25502, 28689, 31877, 35065, 38252],
+            ['YTD Actual', 1194, 2410, 4542, 6699]
+        ];
+        */
+        for (var x = 1; x < connectedBookedData[0].length; x++) {
+            connectedBookedData[0][x] = connectedBookedData[0][x] * 1000;
+            try {
+                connectedBookedData[1][x] = connectedBookedData[1][x] * 1000;
+            } catch (ex) {
+                console.log("Exception: " + ex);
+            }
+        }
+        //connectedKPI = KPI.red;
+        connectedVary = -47;
+        createConnectedBookedChart('#connectedBookedSalesChart', '#connectedBookedTooltip', connectedtooltiptext, '#connectedBookKPI', connectedKPI, connectedVary);
+
+        // Backlog + Sold Not Booked Chart 
+        //backlogtooltiptext = "Total work either contractually agreed to or committed to in writing pending contract finalization. This is our future activity level. Not compared to a plan or goal.";
+        /*
+        var backlogData = [
+            ['Backlog', 1016654, 975499, 968009, 919933],
+            ['Sold but not Booked', 587964, 485252, 532457, 577982]
+        ];
+        */
+        //backlogKPI = null;
+        backlogVary = null;
+        createBacklogChart('#backlogSoldChart', '#backlogSoldTooltip', backlogtooltiptext, '#backlogKPI', backlogKPI, backlogVary);
+
+        // Cash Flow Chart 
+        //cashtooltiptext = "A measure of how well we bill and collect on our projects. Accounts receivable, retention plus cost in excess less billing in excess expressed in days not paid. Goal is 60 days.";
+        /*
+        var cashFlowData = [
+            ['YTD Actual', 62.7, 65.7, 61.9, 57.2],
+            ['Company Goal', 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5, 58.5]
+        ];
+        */
+        for (var x = 0; x < cashFlowData.length - 1; x++) {
+            for (var y = 1; y < cashFlowData[x].length; y++) {
+                var actual = cashFlowData[x][y];
+                var goal = cashFlowData[x + 1][y];
+                if (actual < 58.5) {
+                    goal = goal - (58.5 - actual);
+                    actual = 58.5 - actual;
+                } else {
+                    actual = actual - 58.5;
+                }
+                cashFlowData[x][y] = actual.toFixed(2);
+                cashFlowData[x + 1][y] = goal.toFixed(2);
+            }
+        }
+        console.log("Cashflow Data");
+        console.log(cashFlowData);
+        //cashKPI = KPI.green;
+        cashVary = 2.2;
+        createCashFlowChart('#cashFlowChart', '#cashFlowTooltip', cashtooltiptext, '#cashFlowKPI', cashKPI, cashVary);
+
+        // Safety Incident Chart 
+        /*
+        var safetyIncidentData = [
+            ["Industry Average", 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1, 4.1],
+            ["YTD Actual", .76],
+            ["FY Plan", 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9]
+        ];
+        */
+        safetyHideIndustryAverage = true;
+        //safetytooltiptext = "Rate of recordable injuries per 200,000 hours worked. Measure of how well we plan, execute our daily work and adhere to our safety guidelines.";
+        if (safetyHideIndustryAverage) {
+            tooltiptext += "Industry Average is disabled by default. To enable, click the legend category below.";
+        }
+        //safetyKPI = KPI.green;
+        safetyVary = -23.2;
+        createSafetyIncidentChart('#safetyIncidentChart', '#safetyIncidentTooltip', safetytooltiptext, '#safetyIncidentKPI', safetyKPI, safetyVary);
+
+        // Vehicle Incident Chart 
+        //vehicletooltiptext = "Rate of vehicle incidents per 1.0M miles drive. Measures number of vehicles damaged due to collision or break in. Goal is to reduce incidents and protect our asset value.";
+        /*
+        var vehicleIncidentData = [
+            ["FY Plan", 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5],
+            ["YTD Actual", 10.37]
+        ];
+        */
+        //vehicleKPI = KPI.red;
+        vehicleVary = -73;
+        createVehicleIncidentChart('#vehicleIncidentChart', '#vehicleIncidentTooltip', vehicletooltiptext, '#vehicleIncidentKPI', vehicleKPI, vehicleVary);
+
+        // Vehicle Incident At Fault Chart
+        //vitooltiptext = "Rate of employee caused incidents per 1.0M miles. Goal is to reduce incidents and protect our asset value.";
+        /*
+        var vehicleIncidentAtFaultData = [
+            ["FY Plan", 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25, 2.25],
+            ["YTD Actual", 2.30]
+        ];
+        */
+        //vikpi = KPI.yellow;
+        incidentVary = -57.8;
+        createVehicleIncidentAtFaultChart('#vehicleIncidentAtFaultChart', '#vehicleIncidentAtFaultTooltip', vitooltiptext, '#vehicleIncidentAtFaultKPI', vikpi, incidentVary);
+
+    }
+	
+	// Get data from SP List - KPI Scorecard - Data
+    function init() {
+		var clientContext = new SP.ClientContext.get_current();
+        var oList = clientContext.get_web().get_lists().getByTitle('KPI Scorecard - Data');
+
+        var camlQuery = new SP.CamlQuery();
+        camlQuery.set_viewXml('<View><Query></Query></View>');
+        var collListItem = oList.getItems(camlQuery);
+
+        clientContext.load(collListItem);
+
+        clientContext.executeQueryAsync(function () {
+            var listItemEnumerator = collListItem.getEnumerator();
+            while (listItemEnumerator.moveNext()) {
+                var listItem = listItemEnumerator.get_current();
+				console.log("Found list item: " + listItem.get_item("ID"));
+                var chartTitle = listItem.get_item("Title");
+                var obj = [listItem.get_item("Series")];
+
+                var kpi;
+                switch (listItem.get_item("KPI_x0020_Color")) {
+                    case 'Green':
+                        kpi = KPI.green;
+                        break;
+                    case 'Yellow':
+                        kpi = KPI.yellow;
+                        break;
+                    case 'Red':
+                        kpi = KPI.red;
+                        break;
+                    case 'None':
+                        kpi = null;
+                        break;
+                }
+                var tooltip = listItem.get_item("Tooltip");
+
+                if (chartTitle == 'Safety Incident Rate' || chartTitle == 'Vehicle Incident Rate' || chartTitle == 'Vehicle Incident Rate At Fault') {
+                    spOSHAMonths.map(mon => {
+                        if (listItem.get_item(mon)) {
+                            obj.push(listItem.get_item(mon));
+                        }
+                    });
+                    switch (chartTitle) {
+                        case 'Safety Incident Rate':
+                            safetyIncidentData.push(obj);
+                            safetyKPI = kpi;
+                            safetytooltiptext = tooltip;
+                            break;
+                        case 'Vehicle Incident Rate':
+                            vehicleIncidentData.push(obj);
+                            vehicleKPI = kpi;
+                            vehicletooltiptext = tooltip;
+                            break;
+                        case 'Vehicle Incident Rate At Fault':
+                            vehicleIncidentAtFaultData.push(obj);
+                            vikpi = kpi;
+                            vitooltiptext = tooltip;
+                            break;
+                    }
+                } else {
+                    spMonths.map(mon => {
+                        if (listItem.get_item(mon)) {
+                            obj.push(listItem.get_item(mon));
+                        }
+                    });
+                    switch (chartTitle) {
+                        case 'Earned Revenue':
+                            earnedRevData.push(obj);
+                            earnedKPI = kpi;
+                            earnedRevTooltipText = tooltip;
+                            break;
+                        case 'Operating Income as Percent Earned Revenue':
+                            operatingIncomeData.push(obj);
+                            operatingIncomeKPI = kpi;
+                            operatingTooltiptext = tooltip;
+                            break;
+                        case 'Booked Sales':
+                            bookedSalesData.push(obj);
+                            bookedSalesKPI = kpi;
+                            bookedtooltiptext = tooltip;
+                            break;
+                        case 'Engineering Booked Sales':
+                            designedBookedData.push(obj);
+                            designedBookedKPI = kpi;
+                            designtooltiptext = tooltip;
+                            break;
+                        case 'Connected Solutions Booked Sales':
+                            connectedBookedData.push(obj);
+                            connectedKPI = kpi;
+                            connectedtooltiptext = tooltip;
+                            break;
+                        case 'Backlog Sold but not Booked':
+                            backlogData.push(obj);
+                            backlogKPI = kpi;
+                            backlogtooltiptext = tooltip;
+                            break;
+                        case 'Cash Flow':
+                            cashFlowData.unshift(obj);
+                            cashKPI = kpi;
+                            cashtooltiptext = tooltip;
+                            break;
+                    }
+                }
+            }
+            createCharts();
+		});
+	}
+	
+    function createDesignBookedChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var designBookedSalesChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: designedBookedData,
+                types: {  // Area Chart
+                    '2018 Plan': 'area',
+                    'YTD Actual': 'area-spline'
+                },
+                colors: {
+                    '2018 Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+                //type: 'bar'
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format("$,")
+                    },
+                    min: 0,
+                    padding: { top: 0, bottom: 0 }
+		        }
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var opts = '{style: "decimal", currency: "USD", minimumFractionDigits: 2}';
+                        //var format = d3.format('$');
+                        return '$' + (value).toLocaleString("en-US", opts);
+                        //return format(value);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            },
+            bar: {
+                width: {
+                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                }
+                // or
+                //width: 100 // this makes bar width 100px
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+    }
+
+    function createConnectedBookedChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var connectedBookedSalesChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: connectedBookedData,
+                types: {  // Area Chart
+                    '2018 Plan': 'area',
+                    'YTD Actual': 'area-spline'
+                },
+                colors: {
+                    '2018 Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+                //type: 'bar'
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format("$,")
+                    },
+                    min: 0,
+                    padding: { top: 0, bottom: 0 }
+		        }
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var opts = '{style: "decimal", currency: "USD", minimumFractionDigits: 2}';
+                        //var format = d3.format('$');
+                        return '$' + (value).toLocaleString("en-US", opts);
+                        //return format(value);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            },
+            bar: {
+                width: {
+                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                }
+                // or
+                //width: 100 // this makes bar width 100px
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+    }
+
+    function createEarnedRevChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        c3.generate({
+            bindto: id,
+            data: {
+                columns: earnedRevData,
+                colors: {
+                    '2018 Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format("$,")
+                    },
+                    min: 0,
+                    padding: { top: 0, bottom: 0 }
+		        }
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var opts = '{style: "decimal", currency: "USD", minimumFractionDigits: 2}';
+                        //var format = d3.format('$');
+                        return '$' + (value).toLocaleString("en-US", opts);
+                        //return format(value);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+    }
+
+    function createBookedSalesChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var bookedSalesChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: bookedSalesData,
+                types: {  // Area Chart
+                    '2018 Plan': 'area',
+                    'YTD Actual': 'area-spline'
+                },
+                colors: {
+                    '2018 Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+                //type: 'bar'  // Stacked bar
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format("$,")
+                    },
+                    min: 0,
+                    padding: { top: 0, bottom: 0 }
+		        }
+            },
+            bar: {
+                width: {
+                    ratio: 0.5 // this makes bar width 50% of length between ticks
+                }
+                // or
+                //width: 100 // this makes bar width 100px
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var opts = '{style: "decimal", currency: "USD", minimumFractionDigits: 2}';
+                        //var format = d3.format('$');
+                        return '$' + (value).toLocaleString("en-US", opts);
+                        //return format(value);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+    }
+
+    function createOperatingIncomeChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var opIncomeChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: operatingIncomeData,
+                colors: {
+                    '2018 Plan': 'black',
+                    'YTD Actual': '#FC4C02',
+					'Company Goal': 'grey'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format(",.1%")
+                    },
+                    min: 0,
+                    padding: { top: 0, bottom: 0 }
+		        }
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var format = d3.format('%');
+                        return '%' + value.toFixed(2);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+        if (operatingIncomeHideGoal) {
+            opIncomeChart.hide('Company Goal');
+        }
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+    }
+
+    function createVehicleIncidentChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var vehicleIncidentChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: vehicleIncidentData,
+                type: 'bar',
+                colors: {
+                    'FY Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: oshaMonths
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+    }
+
+    function createVehicleIncidentAtFaultChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var vehicleIncidentChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: vehicleIncidentAtFaultData,
+                type: 'bar',
+                colors: {
+                    'FY Plan': 'black',
+                    'YTD Actual': '#FC4C02'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: oshaMonths
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+    }
+
+    function createSafetyIncidentChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var safetyIncidentChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: safetyIncidentData,
+                type: 'bar',
+                colors: {
+                    'FY Plan': 'black',
+                    'YTD Actual': '#FC4C02',
+                    'Industry Average': 'grey'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: oshaMonths
+                }
+            }
+        });
+        if (safetyHideIndustryAverage) {
+            safetyIncidentChart.hide('Industry Average');
+        }
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+    }
+
+    function createBacklogChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var backlogChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: backlogData,
+                type: 'bar',
+                groups: [
+                    ['Sold but not Booked', 'Backlog']
+                ],
+                colors: {
+                    'Sold but not Booked': 'black',
+                    'Backlog': '#FC4C02'
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                },
+				y : {
+		            tick: {
+		                format: d3.format("$,")
+		            }
+		        }
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (value, ratio, id) {
+                        var opts = '{style: "decimal", currency: "USD", minimumFractionDigits: 2}';
+                        //var format = d3.format('$');
+                        return '$' + (value).toLocaleString("en-US", opts);
+                        //return format(value);
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            }
+        });
+        if (tooltipID) {
+            $(tooltipID).prop("title", tooltiptext);
+            tippy(document.querySelector(tooltipID), {
+                size: 'big'
+            });
+        }
+        if (kpi) {
+            $(kpiID).html(kpi);
+			//$(kpiID).prop("title", "Vary: " + vary + "%");
+			tippy(document.querySelector(kpiID), {
+	            size: 'big'
+	        });
+        }
+    }
+
+    function createCashFlowChart(id, tooltipID, tooltiptext, kpiID, kpi, vary) {
+        var cashFlowChart = c3.generate({
+            bindto: id,
+            data: {
+                columns: cashFlowData,
+                type: 'bar',
+                groups: [
+                    ['Company Goal', 'YTD Actual']
+                ],
+                order: 'asc',
+                colors: {
+                    'Company Goal': 'black',
+                    'YTD Actual': '#FC4C02'
+                },
+                labels: {
+                    format: {
+                        'YTD Actual': function (v, id, i, j) {
+							return v;
+                            if (cashFlowData[1][i+1] < 60) {
+                                return 60 - v;
+                            } else {
+                                return 60 + v;
+                            }
+                        }
+                    }
+                }
+            },
+            zoom: {
+                enabled: false
+            },
+            tooltip: {
+				show: false,
+                format: {
+                    value: function (v, id, i, j) {
+					console.log(v + ' ' + id + ' ' + i + ' ' + j);
+						var returnString;
+						if (i == 'Company Goal') {
+							returnString = 60; 
+						} else if (cashFlowData[1][j+1] < 60) {
+	                        returnString = 60 - v;
+	                    } else {
+	                        returnString = 60 + v;
+	                    }
+                        return returnString + ' days'
+                    }
+                    //            value: d3.format(',') // apply this format to both y and y2
+                }
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    categories: months
+                }
+            },
+            grid: {
+                y: {
+                    lines: [
+                        //{ value: 60, text: 'Break Even', class: 'color-grid' }
+                    ]
+                }
+            }
+        });
+        $(tooltipID).prop("title", tooltiptext);
+        tippy(document.querySelector(tooltipID), {
+            size: 'big'
+        });
+        $(kpiID).html(kpi);
+		//$(kpiID).prop("title", "Vary: " + vary + "%");
+		tippy(document.querySelector(kpiID), {
+            size: 'big'
+        });
+    }
+
+    // Fullscreen Methods
+    $('#operatingIncomeFullScreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('Operating Income as % of Earned Revenue');
+        setTimeout(
+            function () {
+                createOperatingIncomeChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#bookedSalesFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Booked Sales</b> - Total Company');
+        setTimeout(
+            function () {
+                createBookedSalesChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#safetyIncidentFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Safety</b> - Incident Rate (Year-to-Date)');
+        setTimeout(
+            function () {
+                createSafetyIncidentChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#vehicleFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Vehicle</b> - Incident Rate (Year-to-Date)');
+        setTimeout(
+            function () {
+                createVehicleIncidentChart('#modalchart', '#', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#designedBookFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Designed Booked Sales</b> - Total Company');
+        setTimeout(
+            function () {
+                createDesignBookedChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#connectedSolutionsFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Connected Solutions Booked Sales</b> - Total Company');
+        setTimeout(
+            function () {
+                createConnectedBookedChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    }); 
+    $('#backlogFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Backlog + Sold But Not Booked</b>');
+        setTimeout(
+            function () {
+                createBacklogChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#cashflowFullScreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Cash Flow-Project Investment Days Outstanding</b> (lower = better)');
+        setTimeout(
+            function () {
+                createCashFlowChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#vehicleAtFaultFullscreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Vehicle</b> - Incident Rate (Year-to-Date) At Fault');
+        setTimeout(
+            function () {
+                createVehicleIncidentAtFaultChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+    $('#earnedRevenueFullScreen').on("click", function () {
+        $('#modal_default').modal('show');
+        $('.modal-body').height(height);
+        $('.modal-title').html('<b>Earned Revenue</b>');
+        setTimeout(
+            function () {
+                createEarnedRevChart('#modalchart', '', tooltiptext, '', kpi);
+            }, 500);
+    });
+	
+    tippy('.tool', {
+        size: 'big'
+    });
+	
+	// Hide SP shit
+	$('#ms-webpart-chrome-title').hide();
+</script>
